@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update Book Details</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Update Book Details</h1>
+    </div>
+
+    <div class="update-form-box">
+        <form method="post">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="{{ book.title }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="publication_year">Publication Year:</label>
+                <input type="number" id="publication_year" name="publication_year" value="{{ book.publication_year }}">
+            </div>
+
+            <div class="form-group">
+                <label for="authors">Authors:</label>
+                <input type="text" id="authors" name="authors" value="{{ author.name }}">
+            </div>
+
+            <div class="form-group">
+                <label for="birth_date">Birth Date:</label>
+                <input type="date" id="birth_date" name="birth_date" value="{{ author.birth_date }}">
+            </div>
+
+            <div class="form-group">
+                <label for="death_date">Death Date:</label>
+                <input type="date" id="death_date" name="death_date" value="{{ author.death_date }}">
+            </div>
+
+            <div class="form-group">
+                <label for="isbn">ISBN:</label>
+                <input type="text" id="isbn" name="isbn" value="{{ book.isbn }}">
+            </div>
+
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <input type="number" id="rating" name="rating" value="{{ book.rating }}" step="0.1">
+            </div>
+
+            <div class="form-group">
+                <label for="cover">Cover URL:</label>
+                <input type="text" id="cover" name="cover" value="{{ book.cover }}">
+            </div>
+
+            <div class="form-group">
+                <label for="additional_info">Additional Info URL:</label>
+                <input type="text" id="additional_info" name="additional_info" value="{{ book.additional_info }}">
+            </div>
+
+            <button class="big-button" type="submit">Update Book</button>
+        </form>
+    </div>
+
+    <div class="action-buttons">
+        <button class="big-button" onclick="window.location.href='{{ url_for('home') }}'">Back to Library</button>
+        <button class="big-button" onclick="window.location.href='{{ url_for('book_details', book_id=book.id) }}'">Back to Book Details</button>
+    </div>
+</body>
+</html>

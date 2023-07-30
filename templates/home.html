@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Book Library</h1>
+    </div>
+
+    <div class="form-box">
+        <!-- Search Form -->
+        <form action="/" method="post">
+            <label for="search_query" class="search-label">Search books:</label>
+            <input type="text" id="search_query" name="search_query" placeholder="Search books...">
+            <button type="submit" class="big-button search-button">Search</button>
+        </form>
+
+        <!-- Sorting Options -->
+        <form action="/" method="get" class="sorting-form">
+            <label for="sort" class="sorting-label">Sort by:</label>
+            <select id="sort" name="sort" onchange="this.form.submit()" class="big-button sorting-select">
+                <option value="">None</option>
+                <option value="title">Title</option>
+                <option value="publication_year">Publication Year</option>
+                <option value="rating">Rating</option>
+            </select>
+        </form>
+    </div>
+
+    <div class="flash-messages">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
+
+    <div class="book-grid">
+        {% for book, author in books_with_authors %}
+        <div class="book-container">
+            <!-- Book Cover Image -->
+            <div class="book-cover">
+                <img src="{{ book.cover }}" alt="Missing book Cover - Update book with Image URL">
+            </div>
+
+            <!-- Book Details -->
+            <div class="book-details">
+                <h3>{{ book.title }} - {{ book.publication_year }}</h3>
+                <p>Author: {{ author.name }}</p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+                <a href="{{ url_for('book_details', book_id=book.id) }}">
+                    <button class="details-button">Book Details</button>
+                </a>
+                <form action="{{ url_for('delete_book', book_id=book.id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this book?')">
+                    <button class="delete-button" type="submit">Delete Book</button>
+                </form>
+
+                <form action="{{ url_for('delete_author', author_id=author.id) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this author and all associated books?')">
+                    <button class="delete-button" type="submit">Delete Author</button>
+                </form>
+
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="action-buttons">
+        <button class="big-button" onclick="window.location.href='{{ url_for('search') }}'">Search New Book</button>
+        <button class="big-button" onclick="window.location.href='{{ url_for('add_book') }}'">Add Book</button>
+        <button class="big-button" onclick="window.location.href='{{ url_for('add_author') }}'">Add Author</button>
+    </div>
+</body>
+</html>
+

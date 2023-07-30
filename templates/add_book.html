@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Add Book</h1>
+    </div>
+
+    <div class="form-box">
+        <form action="/add_book" method="post">
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn" required><br>
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required><br>
+
+            <label for="publication_year">Publication Year:</label>
+            <input type="number" id="publication_year" name="publication_year" required><br>
+
+            <label for="author_id">Author:</label>
+            <select id="author_id" name="author_id" class="sorting-select">
+                {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.name }}</option>
+                {% endfor %}
+            </select><br>
+
+            <button class="big-button" type="submit">Submit</button>
+        </form>
+
+        {% if error_message %}
+        <div class="error">{{ error_message }}</div>
+        {% endif %}
+
+        {% if message %}
+        <div class="success">{{ message }}</div>
+        {% endif %}
+    </div>
+
+    <div class="action-buttons">
+        <button class="big-button" onclick="window.location.href='{{ url_for('home') }}'">Back to Library</button>
+        <button class="big-button" onclick="window.location.href='{{ url_for('search') }}'">Search New Book</button>
+        <button class="big-button" onclick="window.location.href='{{ url_for('add_author') }}'">Add Author</button>
+    </div>
+</body>
+</html>
+

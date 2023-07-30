@@ -1,0 +1,260 @@
+/* Page Container Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Banner Styling */
+.banner {
+    text-align: center;
+    background-color: #8cb3d9;
+    padding: 10px;
+    margin: 3px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.banner h1 {
+    font-family: 'Arial', sans-serif;
+    color: #FFFFFF;
+    margin: 3px;
+}
+
+/* Book Grid Styling */
+.book-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+
+/* Book Container Styling */
+.book-container {
+    border: 1px solid #8cb3d9;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: left;
+    justify-content: space-between; /* Align buttons to the right side */
+    background-color: #f7f7f7;
+    margin-bottom: 10px; /* Add margin between book containers */
+}
+
+/* Book Cover Styling */
+.book-cover {
+    flex: 0 0 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 20px; /* Add spacing between image and text */
+    float: left; /* Float the image to the left */
+    margin-bottom: 10px; /* Adjust spacing between image and text */
+}
+
+.book-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Home Page Book Details Styling */
+.book-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Book Details Styling */
+.book-info {
+    border: 1px solid #8cb3d9; /* Set border color to match the banner */
+    border-radius: 20px; /* Make the edges rounder */
+    padding: 20px; /* Add padding to the book info box */
+    background-color: #f7f7f7; /* Add background color */
+    margin-bottom: 20px; /* Add margin between book info boxes */
+    overflow: auto; /* Clear floats inside the box */
+    margin: 3px;
+}
+
+.book-info-box h2 {
+    margin-top: 0;
+}
+
+.book-info {
+    overflow: auto; /* Clear floats inside the box */
+}
+
+/* Buttons Styling */
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.buttons form,
+.buttons a {
+    margin-right: 10px;
+}
+
+button {
+    padding: 3px 12px;
+    transition: background-color 0.3s ease;
+    color: #8cb3d9;
+    border: 1px solid #8cb3d9;
+    border-radius: 8px;
+}
+
+/* Updated color and text for delete buttons */
+button.delete-button[type="submit"] {
+    color: #FF0000;
+}
+
+button:hover {
+    background-color: #8cb3d9;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* Float the buttons to the right side */
+.action-buttons {
+    text-align: right;
+    margin: 3px;
+}
+
+/* Make the "Search New Book", "Add Book", and "Add Author" buttons bigger */
+button.big-button {
+    padding: 8px 16px; /* Increased padding for bigger buttons */
+    font-size: 16px; /* Increased font size for bigger buttons */
+}
+
+/* Updated color for responsive layout */
+@media screen and (max-width: 768px) {
+    .book-container {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+    .book-cover {
+        float: none;
+        margin: 0 auto 10px;
+    }
+    .buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .form-box {
+        /* ... previous styles ... */
+        margin-bottom: 10px; /* Add margin between form boxes for smaller screens */
+    }
+}
+
+/* Form Box Styling */
+.form-box {
+    border: 1px solid #8cb3d9; /* Set border color to match the banner */
+    border-radius: 5px; /* Make the edges rounder */
+    padding: 20px; /* Add padding to the form box */
+    background-color: #f7f7f7; /* Add background color */
+    margin-bottom: 25px; /* Add margin between form boxes */
+
+}
+
+/* Adjust line spacing and align form labels */
+.form-box form {
+    line-height: 2; /* Increase line spacing between form elements */
+
+}
+
+.form-box label {
+    display: inline-block;
+    width: 150px;
+    margin-bottom: 10px; /* Add spacing between form labels */
+}
+
+/* Form Box Styling for Update Book Details */
+.update-form-box {
+    /* Copy the styles from .form-box and modify as needed */
+    border: 1px solid #8cb3d9; /* Set border color to match the banner */
+    border-radius: 20px; /* Make the edges rounder */
+    padding: 20px; /* Add padding to the form box */
+    background-color: #f7f7f7; /* Add background color */
+    margin-bottom: 20px; /* Add margin between form boxes */
+    margin: 3px;
+}
+
+.update-form-box form {
+    line-height: 2; /* Increase line spacing between form elements */
+}
+
+.update-form-box label {
+    display: inline-block;
+    width: 160px; /* Increase the width of the labels */
+    margin-bottom: 10px; /* Add spacing between form labels */
+    font-size: 16px; /* Increase font size for labels */
+}
+
+/* Adjust the width of the input fields */
+.form-box input[type="date"],
+.form-box input[type="number"],
+.form-box input[type="text"],
+.update-form-box input[type="text"],
+.update-form-box input[type="number"],
+.update-form-box input[type="date"] {
+    width: 250px; /* Set a wider width for the input fields */
+    padding: 3px; /* Add some padding to the input fields */
+    font-size: 14px; /* Increase font size for input fields */
+    border: 1px solid #8cb3d9; /* Set border color to match the banner */
+    border-radius: 3px;
+    }
+
+
+/* Search and Sorting Styling */
+.search-label,
+.sorting-label {
+    width: 160px; /* Set the same width for the labels */
+    font-size: 16px; /* Increase font size for labels */
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    flex: 1; /* Take the remaining space in the flex container */
+    padding: 3px; /* Add some padding to the search input field */
+    font-size: 14px; /* Increase font size for the search input field */
+
+}
+
+.search-button {
+    padding: 8px 16px; /* Increased padding for the search button */
+    font-size: 18px; /* Increased font size for the search button */
+    float:right;
+    margin-top: 20px;
+    margin-right: 20px;
+
+}
+
+.sorting-select {
+    width: 257px; /* Set the same width for the sorting select */
+    padding: 3px; /* Add some padding to the sorting select */
+    font-size: 14px; /* Increase font size for the sorting select */
+    border-radius: 3px;
+    height: 23px;
+    border: 1px solid #8cb3d9;}
+
+/* Error Box Styling */
+.error-box {
+    font-size: 16px;
+    border: 1px solid #8cb3d9; /* Set border color to match the banner */
+    border-radius: 20px; /* Make the edges rounder */
+    padding: 20px; /* Add padding to the form box */
+    background-color: #f7f7f7; /* Add background color */
+    margin: 3px;
+    text-align: center;
+}
+
+.flash-messages {
+text-align: center;
+color: #8cb3d9;
+font-size: 16px;
+ font-weight: bold;
+  }

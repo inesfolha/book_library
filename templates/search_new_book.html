@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search and Add Book</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Search new books</h1>
+    </div>
+
+    <div class="book-info">
+        <p>(Search results will take a full second to appear.Please note this functionality is limited to just a few requests every hour, if it is not working, please try again later! Thank you)</p>
+
+         <div class="flash-messages">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+        </div>
+
+        <form method="post" action="{{ url_for('search') }}" class="form-box">
+            <label for="search_query"> Search Book:</label>
+            <input type="text" name="search_query" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if title %}
+            <div class="book-box">
+                <h2>{{ title }}</h2>
+                <p>Publication Year: {{ publication_year }}</p>
+                <p>Authors: {{ ", ".join(authors) }}</p>
+                <p>ISBN: {{ isbn }}</p>
+                <img src="{{ cover }}" alt="Book Cover">
+                <p>
+                    <a href="{{ additional_info }}" target="_blank">More info</a>
+                </p>
+                <form method="post" action="{{ url_for('add_searched_data') }}">
+                    <input type="hidden" name="title" value="{{ title }}">
+                    <input type="hidden" name="publication_year" value="{{ publication_year }}">
+                    <input type="hidden" name="authors" value="{{ ", ".join(authors) }}">
+                    <input type="hidden" name="cover" value="{{ cover }}">
+                    <input type="hidden" name="additional_info" value="{{ additional_info }}">
+                    <input type="hidden" name="isbn" value="{{ isbn }}">
+                    <button type="submit" value="Add Book to Library">Add To Library</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="action-buttons">
+        <button class="big-button" onclick="window.location.href='{{ url_for('home') }}'">Back to Library</button>
+        <button class="big-button" onclick="window.location.href='{{ url_for('add_author') }}'">Add Author</button>
+        <button class="big-button" onclick="window.location.href='{{ url_for('add_book') }}'">Add Book</button>
+    </div>
+</body>
+</html>
+

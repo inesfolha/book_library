@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Error</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Error {{ error_code }}</h1>
+    </div>
+    <div class="error-box">
+        <p style="color: #8cb3d9;">{{ error_message }}</p>
+    </div>
+
+<div class="action-buttons">
+        <button class="big-button" onclick="window.location.href='{{ url_for('home') }}'">Back to Library</button>
+    </div>
+</body>
+</html>
+

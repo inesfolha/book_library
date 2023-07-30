@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Author</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="banner">
+        <h1>Add Author</h1>
+    </div>
+
+    <div class="form-box">
+        <form action="/add_author" method="POST">
+            <label for="name">Author Name:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="birth_date">Birthdate:</label>
+            <input type="date" id="birth_date" name="birth_date" required><br>
+
+            <label for="date_of_death">Date of Death:</label>
+            <input type="date" id="date_of_death" name="date_of_death"><br>
+
+             <button class="big-button" type="submit">Submit</button>
+        </form>
+
+        {% if error_message %}
+        <div class="error">{{ error_message }}</div>
+        {% endif %}
+
+        {% if message %}
+        <div class="success">{{ message }}</div>
+        {% endif %}
+    </div>
+
+    <div class="action-buttons">
+        <button class="big-button" onclick="window.location.href='{{ url_for('home') }}'">Back to Library</button>
+        <button class="big-button" onclick="window.location.href='{{ url_for('search') }}'">Search New Book</button>
+        <button class="big-button" onclick="window.location.href='{{ url_for('add_book') }}'">Add Book</button>
+    </div>
+</body>
+</html>
