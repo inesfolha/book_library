@@ -144,7 +144,7 @@ To run this project, you'll need Python 3 and the following dependencies:
 You can install these dependencies using pip:
 
 ``` python 
- pip install flask sqlalchemy
+ pip install flask sqlalchemy requests python-dotenv
  ```
 
 ### Installation Steps
@@ -167,9 +167,11 @@ If you downloaded a ZIP archive, extract its contents to a directory of your cho
   pip install -r requirements.txt
 ```
 
-4. Create the database. Then uncomment lines 35 and 36 from data_models.py and run the script to create the database tables. After the database is set you can delete those lines or comment them out again. 
-
-
+4. Create the database. Then uncomment lines 35-36 from data_models.py and run the script to create the database tables. After the database is set you can delete those lines or comment them out again. 
+``` python 
+with app.app_context():
+   db.create_all()
+```
 5. Set up environment variables: Create a .env file in the project directory and add the following variables:
  ```bash
 DATABASE=<your_database_uri>
