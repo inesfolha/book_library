@@ -116,6 +116,8 @@ The Book model represents information about books in the library, including ISBN
 
 The Book model allows the system to manage detailed information about books, including their ISBN codes, titles, authors, and more. Each book is associated with an author through the author_id field, which establishes a relationship between books and authors in the library.
 
+[Back to the Top](#top)
+
 ### API Integration
 The application integrates with external APIs for book information retrieval:
 
@@ -123,7 +125,7 @@ The application integrates with external APIs for book information retrieval:
 
 [Book Finder API](https://rapidapi.com/dfskGT/api/book-finder1): Find book ISBN codes based on title and author.
 
-[Back to the Top](#top)
+
 ### Error Handling
 The application handles various types of errors, including form validation errors, database-related errors, and API call errors. It provides user-friendly error messages and displays error pages when necessary.
 
